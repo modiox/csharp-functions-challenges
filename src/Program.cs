@@ -1,12 +1,14 @@
 using System;
+using System.Linq.Expressions;
+using System.Security.Cryptography;
 
 namespace FunctionChallenges
 {
     class Program
     {
 
-        public static void StringNumberProcessor(params object[] inputs)
-    {
+        //Function of Challenge 1
+        public static void StringNumberProcessor(params object[] inputs){
         string concatenatedString = "";
         int sumOfNumbers = 0;
 
@@ -28,6 +30,59 @@ namespace FunctionChallenges
         // Print the string + number 
         Console.WriteLine($"{concatenatedString}; {sumOfNumbers}");
     }
+
+    //Function of Challenge 2 
+    //Description: The function should only swap objects if they are of the same type, either string or number. 
+    //For string, their lengths must be more than 5, and for number, they must be more than 18.
+    public static void SwapObjects(params object[] inputs) {
+
+
+    }
+    //Function of Challenge 3
+    public static void GuessingGame()
+{
+    Random num = new Random();
+    Console.WriteLine("To play the Guessing Game...Enter a random number, and if you guess correctly you win :)");
+    Console.WriteLine("Type 'End' to quit the game..");
+
+    while (true)
+    {
+        string userInput = Console.ReadLine();
+
+        if (userInput.ToLower() == "end")
+        {
+            Console.WriteLine("You've exited the game");
+            break;
+        }
+
+        try
+        {
+            int guess = int.Parse(userInput);
+            int randomNum = num.Next(100);
+
+            if (guess == randomNum)
+            {
+                Console.WriteLine("Congrats you've guessed correctly");
+            }
+            else
+            {
+                Console.WriteLine("Good try.. but not the right number P.S: Type 'End' to quit the game..");
+                Console.WriteLine($"The correct number was {randomNum}");
+            }
+        }
+        catch (FormatException)
+        {
+            Console.WriteLine("Invalid input. Please enter a valid integer.");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+    }
+}
+
+   
+
         static void Main(string[] args)
         {
             // Challenge 1: String and Number Processor
@@ -54,10 +109,10 @@ namespace FunctionChallenges
             // Console.WriteLine($"Numbers: {num1}, {num2}");
             // Console.WriteLine($"Strings: {str1}, {str2}");
 
-            // // Challenge 3: Guessing Game
-            // Console.WriteLine("\nChallenge 3: Guessing Game");
-            // // Uncomment to test the GuessingGame method
-            // // GuessingGame(); // Expected outcome: User input until the correct number is guessed or user inputs `Quit`
+            // Challenge 3: Guessing Game
+            Console.WriteLine("\nChallenge 3: Guessing Game");
+            // Uncomment to test the GuessingGame method
+             GuessingGame(); // Expected outcome: User input until the correct number is guessed or user inputs `Quit`
 
             // // Challenge 4: Simple Word Reversal
             // Console.WriteLine("\nChallenge 4: Simple Word Reversal");
