@@ -5,7 +5,6 @@ namespace FunctionChallenges
     class Program
     { 
 
-        
         //Function of Challenge 1
         static void StringNumberProcessor(params object[] inputs){
         string concatenatedString = ""; 
@@ -141,32 +140,31 @@ static string ReverseWords(string sentence)
 
 
             // Challenge 2: Object Swapper
-            Console.WriteLine("\nChallenge 2: Object Swapper");
-            int num1 = 25;
-            int num2 = 30;
-            // int num3 = 10, num4 = 30;
-            string str1 = "HelloWorld", str2 = "Programming";
-            string str3 = "Hi", str4 = "Programming";  
-            object objNum1 = num1;
-            object objNum2 = num2;
-            SwapObjects(ref objNum1, ref objNum2);
-            num1 = (int)objNum1;
-            num2 = (int)objNum2;      
-            // SwapObjects(ref num1, ref num2); // Expected outcome: num1 = 30, num2 = 25  
-            // SwapObjects(ref num3, ref num4); // Error: Value must be more than 18
+            // Test SwapObjects function
+           Console.WriteLine("\nTest SwapObjects function:");
+           // Test swapping integers
+        object num1 = 25; // Declare as object
+        object num2 = 30; // Declare as object
+        Console.WriteLine($"Before swapping: num1 = {num1}, num2 = {num2}");
+        SwapObjects(ref num1, ref num2);
+        Console.WriteLine($"After swapping: num1 = {num1}, num2 = {num2}");
 
-            // SwapObjects(str1, str2); // Expected outcome: str1 = "Programming", str2 = "HelloWorld"
-            // SwapObjects(str3, str4); // Error: Length must be more than 5
+    // Test swapping strings
+    object str1 = "HelloWorld"; // Declare as object
+    object str2 = "Programming"; // Declare as object
+    Console.WriteLine($"Before swapping: str1 = {str1}, str2 = {str2}");
+    SwapObjects(ref str1, ref str2);
+    Console.WriteLine($"After swapping: str1 = {str1}, str2 = {str2}");
 
-            // SwapObjects(true, false); // Error: Upsupported data type
-            // SwapObjects(ref num1, str1); // Error: Objects must be of same types
-
-            Console.WriteLine($"Numbers: {num1}, {num2}");
-            Console.WriteLine($"Strings: {str1}, {str2}");
+    // Test swapping with invalid types
+     int num3 = 10;
+    string str3 = "Hi";
+    Console.WriteLine($"Before swapping: num3 = {num3}, str3 = {str3}");
+    // SwapObjects(ref num3, ref str3); // Error: Objects must be of same types
+    // Console.WriteLine($"After swapping: num3 = {num3}, str3 = {str3}");
 
             // Challenge 3: Guessing Game
             Console.WriteLine("\nChallenge 3: Guessing Game");
-            // Uncomment to test the GuessingGame method
              GuessingGame(); // Expected outcome: User input until the correct number is guessed or user inputs `Quit`
 
             // Challenge 4: Simple Word Reversal
