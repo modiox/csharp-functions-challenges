@@ -40,10 +40,10 @@ namespace FunctionChallenges
     //Function of Challenge 2 
     static void SwapObjects(ref object obj1, ref object obj2) {
 
-        if (obj1.GetType() != obj2.GetType()) { 
+        try { 
+             if (obj1.GetType() != obj2.GetType()) { 
     
-                Console.WriteLine("Objects must be of the same type.");
-                return;
+                throw new ArgumentException("Objects must be of the same type.");
             }
 
             if (obj1 is string && ((string)obj1).Length > 5 && ((string)obj2).Length > 5)
@@ -60,9 +60,17 @@ namespace FunctionChallenges
             }
             else
             {
-                Console.WriteLine("Objects don't meet swapping conditions.");
+               throw new ArgumentException("Objects don't meet swapping conditions.");
             }
+        } 
+    catch (ArgumentException ex) {
+        Console.WriteLine($"Error: {ex.Message}");
+    }
+    catch (Exception ex){
+        Console.WriteLine($"An error occurred: {ex.Message}");
+    }
 
+       
      }
    
     //Function of Challenge 3
@@ -158,10 +166,17 @@ static string ReverseWords(string sentence)
 
     // Test swapping with invalid types
      int num3 = 10;
-    string str3 = "Hi";
-    Console.WriteLine($"Before swapping: num3 = {num3}, str3 = {str3}");
-    // SwapObjects(ref num3, ref str3); // Error: Objects must be of same types
-    // Console.WriteLine($"After swapping: num3 = {num3}, str3 = {str3}");
+     string str3 = "Hi";
+     Console.WriteLine($"Before swapping: num3 = {num3}, str3 = {str3}");
+     // SwapObjects(ref num3, ref str3); // Error: Objects must be of same types
+     // Console.WriteLine($"After swapping: num3 = {num3}, str3 = {str3}");
+      int num4 = 10;
+      string str4= "Hi";
+
+      // SwapObjects with different types
+      object obj1 = num4; // Boxing the integer
+      object obj2 = str4;
+      SwapObjects(ref obj1, ref obj2); //throws the error that they must be of the same type! 
 
             // Challenge 3: Guessing Game
             Console.WriteLine("\nChallenge 3: Guessing Game");
